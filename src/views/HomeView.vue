@@ -1,23 +1,14 @@
 <script setup lang="ts">
 import SearchBar from '@/components/SearchBar.vue';
 import AddBar from '@/components/AddBar.vue';
-import {useToDoStore} from '@/stores/todo'
-import { SortOptions } from '@/shared/types/enums/sort-options';
-import { computed } from 'vue';
+import TaskList from '@/components/TaskList.vue';
 
-const store = useToDoStore()
-
-const todos = computed(() =>
-  store.getItems(SortOptions.name_asc, [{ field: 'done', value: false }])
-);
 
 </script>
 <template>
   <SearchBar />
   <AddBar />
-  <ul>
-    <li v-for="item in todos" v-bind:key="item.id">
-      {{ item.title }}
-    </li>
-  </ul>
+  <TaskList type="deadline"/>
+  <TaskList type="done"/>
+  <TaskList type="undone"/>
 </template>
