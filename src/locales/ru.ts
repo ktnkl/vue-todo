@@ -5,5 +5,9 @@ export default {
   sort: 'Сортировка',
   addTask: 'Добавить задачу',
   enterTaskTitle: "Введите заголовок задачи",
-  enterDeadline: "Выберите дедлайн"
+  enterDeadline: "Выберите дедлайн",
+  closeDeadline: "Близко к дедлайну",
+  undoneTasks: "Ожидают выполнения",
+  doneTasks: "Выполнены",
+  overdue: "Просрочено"
 }

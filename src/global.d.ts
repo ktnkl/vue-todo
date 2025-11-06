@@ -1,5 +1,5 @@
 interface ToDoItem {
-  id: number;
+  id: string;
   title: string;
   notes?: string[];
   done: boolean;
@@ -11,6 +11,11 @@ interface ToDoItem {
 interface FilterOption {
   field: keyof ToDoItem,
   value: string | boolean | number
+}
+
+interface ToDoStore {
+  tasks: ToDoItem[];
+  deadlineFilter: number;
 }
 
 

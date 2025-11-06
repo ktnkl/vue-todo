@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { v4 as uuidv4 } from 'uuid';
+
 import { useToDoStore } from '@/stores/todo';
 
 const { t } = useI18n();
@@ -9,18 +11,18 @@ const store = useToDoStore()
 
 const visible = ref(false)
 const title = ref('')
-const deadline = ref(null)
+const deadline = ref()
 
 const submit = () => {
-  const date = '06.11.2025'
+  const date = new Date().toISOString()
 
   const payload: ToDoItem = {
-    id: 5,
+    id: uuidv4(),
     title: title.value,
     created_at: date,
     updated_at: date,
     done: false,
-    deadline: deadline.value || ''
+    deadline: deadline.value ? deadline.value.toISOString() : ''
   }
 
   store.addItem(payload)
@@ -40,14 +42,12 @@ const submit = () => {
         <DatePicker id="add-task-deadline" v-model="deadline" show-icon hour-format="24" fluid show-time/>
       </FloatLabel>
 
-      <PrimeButton type="submit">
-        {{ t("add") }}
-      </PrimeButton>
+      <PrimeButton type="submit" icon="pi pi-check" iconPos="right" :label="t('add')"/>
     </form>
   </PrimeDialog>
 
   <div class="addBar">
-    
+
     <PrimeButton @click="visible = true">
       {{ t('add') }}
     </PrimeButton>
