@@ -7,16 +7,9 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: 'vue-todo',
   plugins: [
-    vue(
-      // {
-      //   template: {
-      //     compilerOptions: {
-      //       isCustomElement: (tag) => ['DatePicker'].includes(tag)
-      //     }
-      //   }
-      // }
-    ),
+    vue(),
     vueJsx(),
     vueDevTools(),
   ],
